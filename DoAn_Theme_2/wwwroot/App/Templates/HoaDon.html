@@ -1,0 +1,50 @@
+﻿<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Hóa đơn</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-file-text"></i></a></li>
+                    <!--<li class="breadcrumb-item"><a href="#!">Basic Components</a></li>-->
+                    <li class="breadcrumb-item"><a href="#!Bill">Hóa đơn</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <a href="#!CreateBill" class="btn btn-primary">Tạo đơn hàng</a>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Khách hàng</th>
+                        <th>Ngày tạo</th>
+                        <th>Số lượng sản phẩm</th>
+                        <th>Tổng tiền</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    <tr ng-repeat="item in listDonHang">
+                        <td>{{item.tenKhachHang}}</td>
+                        <td>{{item.ngayTao}}</td>
+                        <td>
+                            {{item.soSanPham | number}}
+                        </td>
+                        <td>{{item.tongTien | number}}</td>
+                        <td><a class="btn btn-primary" ng-href="#!DetailBill?id={{item.id}}">Chi tiết</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

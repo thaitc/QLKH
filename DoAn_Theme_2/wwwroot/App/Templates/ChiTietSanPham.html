@@ -1,0 +1,57 @@
+﻿<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Chi tiết sản phẩm</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-file-text"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">Sản phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="#!Report">Chi tiết sản phẩm</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                Tên sản phẩm: {{obj.ten}}
+            </div>
+            <div class="col-md-2">
+                Giá vốn: {{obj.giaVon | number}}
+            </div>
+            <div class="col-md-2">
+                Giá bán: {{obj.giaBan | number}}
+            </div>
+            <div class="col-md-2">
+                Tồn kho: {{obj.tonKho}}
+            </div>
+            <div class="col-md-3">
+                Nhóm hàng: {{obj.tenNhomHang}}
+            </div>
+        </div>
+        <h5 class="mt-3">Ảnh sản phầm</h5>
+        <div class="row">
+            <div class="col-md-3" ng-repeat="item in obj.listImg">
+                <img ng-src="{{item}}" style="width: 80px;" />
+            </div>
+        </div>
+
+        <h5 class="mt-3">Thuộc tính sản phầm</h5>
+        <table class="table table-bordered">
+            <tr>
+                <td>Tên thuộc tính</td>
+                <td>Giá trị</td>
+            </tr>
+            <tr ng-repeat="item in obj.listThuocTinh">
+                <td>{{item.tenThuocTinh}}</td>
+                <td>{{item.giaTri}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

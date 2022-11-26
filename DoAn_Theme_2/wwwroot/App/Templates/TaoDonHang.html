@@ -1,0 +1,260 @@
+﻿<style>
+    .vodiapicker {
+        display: none;
+    }
+
+    #a {
+        padding-left: 0px;
+    }
+
+        #a img, .btn-select img {
+            width: 12px;
+        }
+
+        #a li {
+            list-style: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+            #a li:hover {
+                background-color: #F4F3F3;
+            }
+
+            #a li img {
+                margin: 5px;
+            }
+
+            #a li span, .btn-select li span {
+                margin-left: 30px;
+            }
+
+    /* item list */
+
+    .b {
+        /*display: none;*/
+        width: 100%;
+        max-width: 350px;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+    }
+
+    .open {
+        display: show !important;
+    }
+
+    .btn-select {
+        /*margin-top: 10px;*/
+        width: 100%;
+        max-width: 350px;
+        height: 34px;
+        border-radius: 5px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
+
+        .btn-select li {
+            list-style: none;
+            float: left;
+            padding-bottom: 0px;
+        }
+
+        .btn-select:hover li {
+            margin-left: 0px;
+        }
+
+        .btn-select:hover {
+            background-color: #F4F3F3;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0px 0px 1px #ccc;
+        }
+
+        .btn-select:focus {
+            outline: none;
+        }
+
+    .lang-select.active > .b {
+        /*margin-left: 50px;*/
+        display: block;
+    }
+</style>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Tạo đơn hàng</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-file-text"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!Bill">Đơn hàng</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Tạo đơn hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css" type="image/x-icon">
+<div class="card">
+    <div class="card-header">
+        Thông tin khách hàng
+    </div>
+
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-1">
+                <label for="nameBasic" class="form-label">Mã</label>
+            </div>
+            <div class="col-md-3 mb-3">
+                <input type="text" ng-model="khachHang.Ma" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-1 mb-3" ng-if="!isNewCustomer">
+                <div style="cursor:pointer;" data-toggle="modal" data-target="#dialogNhomSp">
+                    <i style="font-size:25px;" class="feather icon-search"></i>
+                </div>
+            </div>
+            <div class="col-md-2 mb-3" ng-if="!isNewCustomer">
+                <button class="btn btn-primary" ng-click="getCustomerByCode()">Truy vấn</button>
+            </div>
+            <div class="col-md-2 mb-3">
+                <div><input type="checkbox" ng-model="isNewCustomer" /> Khách hàng mới</div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-3 mb-3">
+                <label for="nameBasic" class="form-label">Họ tên</label>
+                <input type="text" ng-disabled="!isNewCustomer" ng-model="khachHang.Ten" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col mb-3">
+                <label for="nameBasic" class="form-label">Số điện thoại</label>
+                <input type="text" ng-disabled="!isNewCustomer" ng-model="khachHang.SoDienThoai" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="nameBasic" class="form-label">Email</label>
+                <input type="text" ng-disabled="!isNewCustomer" ng-model="khachHang.Email" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col mb-3">
+                <label for="nameBasic" class="form-label">Ngày sinh</label>
+                <input type="date" ng-disabled="!isNewCustomer" ng-model="khachHang.NgaySinh" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-12 mb-3">
+                <label for="nameBasic" class="form-label">Địa chỉ</label>
+                <input type="text" ng-disabled="!isNewCustomer" ng-model="khachHang.DiaChi" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div ng-if="isNewCustomer">
+            <button class="btn btn-primary" ng-click="createCustomer()">Lưu</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="card" ng-if="khachHang.id">
+    <div class="card-header">
+        Thông tin đơn hàng
+    </div>
+
+    <div class="card-body">
+
+        <div class="row g-3" ng-repeat="item in chiTietDonHangs">
+            <div class="col-md-3 mb-3">
+                <label>Chọn sản phẩm</label>
+
+                <div class="lang-select" ng-click="showDropSP($index)">
+                    <button class="btn-select" value="">
+                        <img style="width:40px;" ng-src="{{item.path}}" alt="" />
+                        {{item.ten}}
+                    </button>
+                    <div class="b" ng-if="item.active">
+                        <ul id="a">
+                            <li ng-repeat="itemSP in sanPhamsDrop" ng-click="changeProduct(itemSP, $parent.$index)"><img style="width:50px;" ng-src="{{itemSP.path}}" alt="" value="{{itemSP.id}}" /><span>{{itemSP.ten}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="nameBasic" class="form-label">Số lượng</label>
+                <input type="number" ng-model="item.soLuong" ng-change="changeTrietKhau($index)" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="nameBasic" class="form-label">Đơn giá</label>
+                <input disabled type="number" ng-model="item.giaBan" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="nameBasic" class="form-label">Triết khấu</label>
+                <input type="number" ng-change="changeTrietKhau($index)" ng-model="item.trietKhau" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="nameBasic" class="form-label">Đơn vị triết khấu</label>
+                <select ng-model="item.donViTrietKhau" ng-change="changeTrietKhau($index)" class="form-control form-control-sm">
+                    <option value="1">%</option>
+                    <option value="2">Số tiền cố định</option>
+                </select>
+            </div>
+            <div class="col mb-3">
+                <label for="nameBasic" class="form-label">Thành tiền</label>
+                <input type="text" disabled ng-model="item.thanhTien" id="nameBasic" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-danger" ng-click="AddProduct()">Thêm sản phẩm</button>
+            <button class="btn btn-primary" ng-click="createBill()">Lưu</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="dialogNhomSp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Tìm kiếm khách hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-2">
+                    <div class="col mb-3">
+                        <label for="nameBasic" class="form-label">Tên khách hàng</label>
+                        <input type="text" ng-model="objKHSearch.Ten" id="nameBasic" class="form-control form-control-sm" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameBasic" class="form-label">Số điện thoại</label>
+                        <input type="text" ng-model="objKHSearch.SoDienThoai" id="nameBasic" class="form-control form-control-sm" />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="nameBasic" class="form-label">Email</label>
+                        <input type="text" ng-model="objKHSearch.Email" id="nameBasic" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <button class="btn btn-primary" ng-click="filterCustomer()">Tìm kiếm</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td>Mã</td>
+                            <td>Tên</td>
+                            <td>Số điện thoại</td>
+                        </tr>
+                        <tr ng-repeat="item in listKHSearch">
+                            <td>{{item.ma}}</td>
+                            <td>{{item.ten}}</td>
+                            <td>{{item.soDienThoai}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
