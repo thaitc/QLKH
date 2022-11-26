@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DoAn_Theme_2.props" />
+</Project>
