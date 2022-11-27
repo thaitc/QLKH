@@ -47,7 +47,10 @@
                             <td>
                                 {{item.tonKho}}
                             </td>
-                            <td><a class="btn btn-primary" ng-href="#!DetailProduct?id={{item.id}}">Chi tiết</a></td>
+                            <td>
+                                <a class="btn btn-primary" ng-href="#!DetailProduct?id={{item.id}}">Chi tiết</a>
+                                <a class="btn btn-primary" ng-href="#!UpdateProduct?id={{item.id}}">Chỉnh sửa</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -142,7 +145,7 @@
                                         <input ng-model="item.GiaTri" class="form-control form-control-sm" />
                                     </div>
                                     <div class="col-md-1 d-flex align-items-center">
-                                        <i style="font-size:25px; cursor:pointer;" ng-click="removeProperty($index + 1)" class="feather icon-x-circle"></i>
+                                        <i style="font-size:25px; cursor:pointer;" ng-click="removeProperty($index)" class="feather icon-x-circle"></i>
                                     </div>
                                 </div>
                             </div>

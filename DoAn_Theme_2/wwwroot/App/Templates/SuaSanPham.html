@@ -1,0 +1,77 @@
+﻿<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Chỉnh sửa sản phẩm</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-file-text"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">Sản phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="#!Report">Chỉnh sửa sản phẩm</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                Tên sản phẩm: <input class="form-control form-control-sm" ng-model="obj.ten" />
+            </div>
+            <div class="col-md-2">
+                Giá vốn: <input class="form-control form-control-sm" ng-model="obj.giaVon"/>
+            </div>
+            <div class="col-md-2">
+                Giá bán: <input class="form-control form-control-sm" ng-model="obj.giaBan" />
+            </div>
+            <div class="col-md-2">
+                Tồn kho: <input class="form-control form-control-sm" ng-model="obj.tonKho" />
+            </div>
+            <div class="col-md-3">
+                Nhóm hàng: 
+                <select class="form-control form-control-sm" ng-model="obj.idNhomHang">
+                    <option value={{item.id}} ng-repeat="item in listCategoryProduct">{{item.ten}}</option>
+                </select>
+            </div>
+        </div>
+        <h5 class="mt-3">Ảnh sản phầm</h5>
+        <div class="row">
+            <div class="col-md-3" ng-repeat="item in obj.listImg">
+                <img ng-src="{{item}}" style="width: 80px;" />
+            </div>
+        </div>
+
+        <h5 class="mt-3">Thuộc tính sản phầm</h5>
+        <div>
+          
+            <div ng-repeat="item in obj.listThuocTinh">
+                <div class="row mt-2">
+                    <div class="col-md-4">
+                        <label class="form-label">Thuộc tính</label>
+                        <select ng-model="item.id" class="form-control form-control-sm">
+                            <option value={{itemPro.id}} ng-repeat="itemPro in listProperty">{{itemPro.ten}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7">
+                        <label class="form-label">Giá trị</label>
+                        <input ng-model="item.giaTri" class="form-control form-control-sm" />
+                    </div>
+                    <div class="col-md-1 d-flex align-items-center">
+                        <i style="font-size:25px; cursor:pointer;" ng-click="removeProperty($index)" class="feather icon-x-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 d-flex justify-content-start">
+                <button class="btn btn-success btn-sm" ng-click="addProperty()">Thêm thuộc tính</button>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-primary" ng-click="save()">Lưu</button>
+        </div>
+    </div>
+
+</div>

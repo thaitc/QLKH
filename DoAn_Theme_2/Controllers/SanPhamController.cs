@@ -75,6 +75,7 @@ namespace DoAn.Controllers
                 result.GhiChu = sanPham.GhiChu;
                 result.Ma = sanPham.Ma;
                 result.TonKho = sanPham.TonKho;
+                result.IdNhomHang = sanPham.IdNhomHang;
 
                 var nhomHang = _db.NhomHangs.Find(sanPham.IdNhomHang);
                 if (nhomHang != null)
@@ -90,7 +91,8 @@ namespace DoAn.Controllers
                                        {
                                            TenThuocTinh = sptt.Ten,
                                            GiaTri = tt.GiaTri,
-                                           Id = tt.Id
+                                           Id = sptt.Id,
+                                           IdSanPham = tt.IdSanPham
                                        })
                                        .ToList();
 
@@ -98,6 +100,35 @@ namespace DoAn.Controllers
             }
 
             return Json(result);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateSanPham([FromBody]SanPhamAddParam param)
+        {
+         
+            var sanPham = _db.SanPhams.Find(param.sanPham.Id);
+
+            if (sanPham != null)
+            {
+                sanPham.Ten = param.sanPham.Ten;
+                sanPham.GiaBan = param.sanPham.GiaBan;
+                sanPham.GiaVon = param.sanPham.GiaVon;
+                sanPham.GhiChu = param.sanPham.GhiChu;
+                sanPham.IdNhomHang = param.sanPham.IdNhomHang;
+                sanPham.TonKho = param.sanPham.TonKho;
+
+                var listPro = _db.ThuocTinhOfSanPhams.Where(x => x.IdSanPham == sanPham.Id).ToList();
+                _db.ThuocTinhOfSanPhams.RemoveRange(listPro);
+
+                foreach (var item in param.thuocTinhs)
+                    item.IdSanPham = param.sanPham.Id;
+
+                _db.ThuocTinhOfSanPhams.AddRange(param.thuocTinhs);
+
+                _db.SaveChanges();
+            }
+
+            return Json(sanPham);
         }
     }
 }

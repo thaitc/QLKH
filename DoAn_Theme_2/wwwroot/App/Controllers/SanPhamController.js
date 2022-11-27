@@ -122,7 +122,7 @@
             }
 
             $scope.removeProperty = function (index) {
-                $scope.listPropertyProduct = $scope.listPropertyProduct.splice(index, 1)
+               $scope.listPropertyProduct.splice(index, 1)
             }
         }]);
 

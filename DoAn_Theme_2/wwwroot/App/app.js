@@ -55,5 +55,9 @@
                 controller: 'ChiTietSanPhamController',
                 templateUrl: "/App/Templates/ChiTietSanPham.html"
             }) 
+            .when("/UpdateProduct", {
+                controller: 'SuaSanPhamController',
+                templateUrl: "/App/Templates/SuaSanPham.html"
+            }) 
     }]);
 })();
