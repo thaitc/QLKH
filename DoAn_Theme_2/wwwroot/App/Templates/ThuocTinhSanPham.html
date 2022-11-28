@@ -26,11 +26,16 @@
                 <thead>
                     <tr>
                         <th>Tên thuộc tính</th>
+                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <tr ng-repeat="item in listThuocTinh">
                         <td>{{item.ten}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" ng-click="openDialogUpdate(item.id)">Chỉnh sửa</button>
+                            <button class="btn btn-primary btn-sm">Xóa</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -55,6 +60,29 @@
                 <div class="modal-footer">
                     <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
                     <button type="button" ng-click="create()" class="btn  btn-primary">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dialogUpdateThuocTinh" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm thuộc tính sản phẩm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-2">
+                    <div class="col mb-3">
+                        <label for="nameBasic" class="form-label">Tên thuộc tính</label>
+                        <input type="text" ng-model="objUpdate.ten" id="nameBasic" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" ng-click="update()" class="btn  btn-primary">Lưu</button>
                 </div>
             </div>
         </div>

@@ -5,6 +5,13 @@
         .module('app')
         .controller('SanPhamController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
             $scope.obj = {}
+            $scope.objNhomSp = {
+                Ten: ''
+            }
+
+            $scope.objThuocTinh = {
+                Ten: ''
+            }
 
             getList()
             getListNhomSanPham()
@@ -123,6 +130,32 @@
 
             $scope.removeProperty = function (index) {
                $scope.listPropertyProduct.splice(index, 1)
+            }
+
+            $scope.createNhomSp = function () {
+                $http.post("/NhomSanPham/Create", $scope.objNhomSp).then(function (result) {
+                    console.log(result.data)
+                    $('#dialogNhomSp').modal('hide');
+                    $scope.objNhomSp.Ten = ''
+                    getListNhomSanPham()
+                    alert('Tạo nhóm sản phẩm thành công')
+                })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            }
+
+            $scope.createThuocTinh = function () {
+                $http.post("/ThuocTinhSanPham/Create", $scope.objThuocTinh).then(function (result) {
+                    console.log(result.data)
+                    $('#dialogThuocTinh').modal('hide');
+                    $scope.objThuocTinh.Ten = ''
+                    alert('Thêm thuộc tính thành công')
+                    getListThuocTinh()
+                })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
             }
         }]);
 

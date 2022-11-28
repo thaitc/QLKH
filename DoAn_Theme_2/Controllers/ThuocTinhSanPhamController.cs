@@ -25,5 +25,38 @@ namespace DoAn_Theme_2.Controllers
             _db.SaveChanges();
             return Json(param.Id);
         }
+
+        public IActionResult GetDetail(int IdNhomSp)
+        {
+            var result = new ThuocTinhSanPham();
+            result = _db.ThuocTinhSanPhams.Find(IdNhomSp);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public IActionResult Update([FromBody] ThuocTinhSanPham param)
+        {
+            var thuocTinh = _db.ThuocTinhSanPhams.Find(param.Id);
+            if (thuocTinh != null)
+            {
+                thuocTinh.Ten = param.Ten;
+                _db.SaveChanges();
+            }
+
+            return Json(param);
+        }
+
+        public IActionResult Delete(int IdNhomSp)
+        {
+            var thuocTinh = _db.ThuocTinhSanPhams.Find(IdNhomSp);
+            if (thuocTinh != null)
+            {
+                _db.ThuocTinhSanPhams.Remove(thuocTinh);
+                _db.SaveChanges();
+            }
+
+            return Json(IdNhomSp);
+        }
+
     }
 }

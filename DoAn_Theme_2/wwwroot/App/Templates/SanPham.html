@@ -17,12 +17,12 @@
         </div>
     </div>
 
-    
+
     <div class="card">
         <div class="card-header">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Thêm sản phẩm</button>
         </div>
-       
+
         <div class="card-body">
             <div class="table-responsive text-nowrap">
                 <table class="table">
@@ -48,15 +48,15 @@
                                 {{item.tonKho}}
                             </td>
                             <td>
-                                <a class="btn btn-primary" ng-href="#!DetailProduct?id={{item.id}}">Chi tiết</a>
-                                <a class="btn btn-primary" ng-href="#!UpdateProduct?id={{item.id}}">Chỉnh sửa</a>
+                                <a class="btn btn-primary btn-sm" ng-href="#!DetailProduct?id={{item.id}}">Chi tiết</a>
+                                <a class="btn btn-primary btn-sm" ng-href="#!UpdateProduct?id={{item.id}}">Chỉnh sửa</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
     </div>
 
     <div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -81,7 +81,7 @@
                             <input type="text" ng-model="obj.MaVach" id="nameBasic" class="form-control form-control-sm" />
                         </div>
                     </div>
-                    <div class="row g-3">
+                    <div class="row g-3 align-items-end">
                         <div class="col mb-3">
                             <label for="nameBasic" class="form-label">Giá vốn</label>
                             <input type="number" ng-model="obj.GiaVon" id="nameBasic" class="form-control form-control-sm" />
@@ -95,7 +95,7 @@
                             <input type="number" ng-model="obj.TonKho" id="nameBasic" class="form-control form-control-sm" />
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="nameBasic" class="form-label">Nhóm sản phẩm</label>
+                            <label for="nameBasic" class="form-label">Nhóm sản phẩm <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialogNhomSp">+</button></label>
                             <select class="form-control form-control-sm" ng-model="obj.IdNhomHang">
                                 <option value={{item.id}} ng-repeat="item in listCategoryProduct">{{item.ten}}</option>
                             </select>
@@ -127,8 +127,8 @@
                     <input type="file" multiple onchange="angular.element(this).scope().previewFile(this)" />
 
                     <div class="mt-3">
-                        <div class="col-md-3 mb-3">
-                            Thuộc tính sản phẩm
+                        <div class="col-md-5 mb-3">
+                            Thuộc tính sản phẩm <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dialogThuocTinh">+</button>
                         </div>
                         <div>
                             <button class="btn btn-primary" ng-click="addProperty()">Thêm thuộc tính</button>
@@ -153,8 +153,54 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Đóng</button>
                     <button type="button" ng-click="create()" class="btn  btn-primary">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialogNhomSp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm nhóm sản phẩm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label for="nameBasic" class="form-label">Tên nhóm sản phẩm</label>
+                            <input type="text" ng-model="objNhomSp.Ten" id="nameBasic" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" ng-click="createNhomSp()" class="btn  btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialogThuocTinh" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm thuộc tính sản phẩm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label for="nameBasic" class="form-label">Tên thuộc tính</label>
+                            <input type="text" ng-model="objThuocTinh.Ten" id="nameBasic" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" ng-click="createThuocTinh()" class="btn  btn-primary">Lưu</button>
+                    </div>
                 </div>
             </div>
         </div>

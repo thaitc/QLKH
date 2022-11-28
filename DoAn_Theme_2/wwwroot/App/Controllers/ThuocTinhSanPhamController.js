@@ -9,6 +9,8 @@
                 Ten: ''
             }
 
+            $scope.objUpdate = {}
+
             getListThuocTinh()
 
             function getListThuocTinh() {
@@ -23,7 +25,7 @@
             $scope.create = function () {
                 $http.post("/ThuocTinhSanPham/Create", $scope.obj).then(function (result) {
                     console.log(result.data)
-                    //$('#dialogThuocTinh').modal('hide');
+                    $('#dialogThuocTinh').modal('hide');
                     getListThuocTinh()
                 })
                     .catch(function (error) {
@@ -31,5 +33,14 @@
                     })
             }
 
+            $scope.openDialogUpdate = function (id) {
+                $http.get("/ThuocTinhSanPham/GetDetail?IdNhomSp=" + id).then(function (result) {
+                    $scope.objUpdate = result.data
+                    $('#dialogUpdateThuocTinh').modal('show');
+                })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            }
         }]);
 })();
