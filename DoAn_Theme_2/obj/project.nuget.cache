@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Rv5+TGrtZ5VYr7we8qNMbVJ/usFjM/ENBHEK+hWB9PavgwKqZDztIXee6ypsrygMlsNsY9sNce//HZS7zwMlCA==",
+  "dgSpecHash": "0Y30oANxWvBR8Tm2fXHaTCH6I3TdwBge6tacvMKO7cWmXM5BUhF8mHYj2rxxQCWCDMKPUmKF//MO7We+PibYrQ==",
   "success": true,
   "projectFilePath": "D:\\DoAn_Theme_2\\DoAn_Theme_2\\DoAn_Theme_2\\DoAn_Theme_2.csproj",
   "expectedPackageFiles": [
@@ -104,7 +104,7 @@
     "C:\\Users\\truon\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\truon\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\truon\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\truon\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.31\\microsoft.netcore.app.host.win-x64.3.1.31.nupkg.sha512"
+    "C:\\Users\\truon\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
   ],
   "logs": []
 }

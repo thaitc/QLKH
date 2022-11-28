@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\NhanVien\" />
     <Folder Include="Shared\BaoCaos\Param\" />
     <Folder Include="wwwroot\Upload\" />
   </ItemGroup>
