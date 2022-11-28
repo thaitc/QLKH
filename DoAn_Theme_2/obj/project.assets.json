@@ -5724,19 +5724,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\truon\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DoAnGit\\QLKH\\DoAn_Theme_2\\DoAn_Theme_2.csproj",
+      "projectUniqueName": "D:\\New folder\\QLKH\\DoAn_Theme_2\\DoAn_Theme_2.csproj",
       "projectName": "DoAn_Theme_2",
-      "projectPath": "E:\\DoAnGit\\QLKH\\DoAn_Theme_2\\DoAn_Theme_2.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\DoAnGit\\QLKH\\DoAn_Theme_2\\obj\\",
+      "projectPath": "D:\\New folder\\QLKH\\DoAn_Theme_2\\DoAn_Theme_2.csproj",
+      "packagesPath": "C:\\Users\\truon\\.nuget\\packages\\",
+      "outputPath": "D:\\New folder\\QLKH\\DoAn_Theme_2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\truon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5793,6 +5797,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.22, 3.1.22]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5801,7 +5811,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
